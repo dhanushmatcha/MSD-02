@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Login - Government Birth Registration Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="top-tricolor" aria-hidden="true"></div>
+    <div class="national-ribbon" aria-hidden="true"></div>
+    
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="img/logo.png" alt="Government Logo" class="logo-img">
+            </div>
+            <div class="header-text">
+                <small class="gov-tagline">Government of India</small>
+                <h1>Government Birth Registration Portal</h1>
+                <p>Official Digital Services for Birth Registration</p>
+            </div>
+            <nav class="header-actions" aria-label="Header actions">
+                <a class="icon-btn" href="index.html" title="Home" aria-label="Home">
+                    <span class="material-symbols-outlined">home</span>
+                </a>
+                <a class="icon-btn" href="help-center.html" title="Help" aria-label="Help">
+                    <span class="material-symbols-outlined">help</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="hospital-login-section">
+            <div class="hospital-login-container">
+                <div class="hospital-login-header">
+                    <div class="hospital-icon">
+                        <span class="material-symbols-outlined">local_hospital</span>
+                    </div>
+                    <h2>Hospital Staff Login</h2>
+                    <p>Access the Birth Registration Management System</p>
+                </div>
+                
+                <form class="hospital-login-form" id="hospitalLoginForm">
+                    <div class="form-group">
+                        <label for="hospitalId">Hospital ID:</label>
+                        <input type="text" id="hospitalId" name="hospitalId" placeholder="Enter your hospital ID" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="staffId">Staff ID:</label>
+                        <input type="text" id="staffId" name="staffId" placeholder="Enter your staff ID" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <div class="password-input">
+                            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                            <button type="button" class="toggle-password" id="togglePassword">
+                                <span class="material-symbols-outlined">visibility</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rememberMe" name="rememberMe">
+                            <span class="checkmark"></span>
+                            Remember me on this device
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Login to Hospital Portal</button>
+                    </div>
+                </form>
+                
+                <div class="hospital-login-footer">
+                    <p>New Hospital Registration? <a href="hospital-registration.html">Apply here</a></p>
+                    <p>Individual User? <a href="login.html">User Login</a></p>
+                </div>
+                
+                <div class="hospital-features">
+                    <h3>Hospital Portal Features:</h3>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <span class="material-symbols-outlined">add_circle</span>
+                            <span>Register New Births</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="material-symbols-outlined">edit_document</span>
+                            <span>Update Birth Records</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="material-symbols-outlined">search</span>
+                            <span>Search Birth Records</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="material-symbols-outlined">download</span>
+                            <span>Generate Certificates</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="material-symbols-outlined">analytics</span>
+                            <span>View Statistics</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="material-symbols-outlined">notifications</span>
+                            <span>Manage Notifications</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hospital-info">
+                    <h3>Important Information:</h3>
+                    <ul>
+                        <li>Only authorized hospital staff can access this portal</li>
+                        <li>Keep your login credentials secure and confidential</li>
+                        <li>All activities are logged for audit purposes</li>
+                        <li>Contact your system administrator for access issues</li>
+                        <li>Ensure compliance with data protection regulations</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background-color: #333; color: #fff; padding: 20px 0; font-family: Arial, sans-serif;">
+        <div style="max-width: 1200px; margin: auto; text-align: center;">
+            <p>&copy; 2024 Government Birth Registration Portal. All rights reserved.</p>
+            <p><a href="index.html" style="color: #0ac;">Back to Home</a></p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toggle password visibility
+            const togglePassword = document.getElementById('togglePassword');
+            const password = document.getElementById('password');
+            
+            togglePassword.addEventListener('click', function() {
+                const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                password.setAttribute('type', type);
+                
+                const icon = this.querySelector('.material-symbols-outlined');
+                icon.textContent = type === 'password' ? 'visibility' : 'visibility_off';
+            });
+            
+            // Form submission
+            document.getElementById('hospitalLoginForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const hospitalId = document.getElementById('hospitalId').value;
+                const staffId = document.getElementById('staffId').value;
+                const password = document.getElementById('password').value;
+                const rememberMe = document.getElementById('rememberMe').checked;
+                
+                if (!hospitalId || !staffId || !password) {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+                
+                // Simulate hospital login process
+                alert('Hospital login successful! Redirecting to hospital dashboard...');
+                
+                // Here you would typically make an API call to authenticate hospital staff
+                // For demo purposes, we'll just show a success message
+                console.log('Hospital login attempt:', { hospitalId, staffId, password, rememberMe });
+                
+                // Redirect to hospital dashboard after successful login
+                setTimeout(() => {
+                    window.location.href = 'hospital-dashboard.html';
+                }, 1500);
+            });
+        });
+    </script>
+</body>
+</html>

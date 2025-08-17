@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birth Registration Form - Government Birth Registration Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .form-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-header h2 {
+            color: var(--primary-blue);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-header p {
+            color: var(--dark-gray);
+            opacity: 0.8;
+        }
+
+        .form-section {
+            margin-bottom: 2.5rem;
+            padding: 1.5rem;
+            background: var(--light-gray);
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .form-section h3 {
+            color: var(--primary-blue);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-section h3::before {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark-gray);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(30, 60, 114, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(30, 60, 114, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(30, 60, 114, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .back-link a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .form-actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="assets/logo.png" alt="Government Logo" class="logo-img">
+            </div>
+            <div class="header-text">
+                <h1>Government Birth Registration Portal</h1>
+                <p>Birth Registration Form</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="form-container">
+            <div class="form-header">
+                <h2>Birth Registration Form</h2>
+                <p>Please fill in all required information for birth registration</p>
+            </div>
+
+            <form id="birthForm" class="birth-form">
+                <!-- Child's Information -->
+                <div class="form-section">
+                    <h3>Child's Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="childFirstName">First Name <span class="required">*</span></label>
+                            <input type="text" id="childFirstName" name="childFirstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="childLastName">Last Name <span class="required">*</span></label>
+                            <input type="text" id="childLastName" name="childLastName" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="childDOB">Date of Birth <span class="required">*</span></label>
+                            <input type="date" id="childDOB" name="childDOB" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="childGender">Gender <span class="required">*</span></label>
+                            <select id="childGender" name="childGender" required>
+                                <option value="">Select gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="childPlaceOfBirth">Place of Birth <span class="required">*</span></label>
+                        <input type="text" id="childPlaceOfBirth" name="childPlaceOfBirth" 
+                               placeholder="City, State" required>
+                    </div>
+                </div>
+
+                <!-- Parents' Information -->
+                <div class="form-section">
+                    <h3>Parents' Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fatherAadhaar">Father's Aadhaar Number <span class="required">*</span></label>
+                            <input type="text" id="fatherAadhaar" name="fatherAadhaar" 
+                                   pattern="[0-9]{12}" maxlength="12" 
+                                   placeholder="12-digit Aadhaar" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="motherAadhaar">Mother's Aadhaar Number <span class="required">*</span></label>
+                            <input type="text" id="motherAadhaar" name="motherAadhaar" 
+                                   pattern="[0-9]{12}" maxlength="12" 
+                                   placeholder="12-digit Aadhaar" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fatherName">Father's Full Name <span class="required">*</span></label>
+                            <input type="text" id="fatherName" name="fatherName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="motherName">Mother's Full Name <span class="required">*</span></label>
+                            <input type="text" id="motherName" name="motherName" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fatherPhone">Father's Phone Number</label>
+                            <input type="tel" id="fatherPhone" name="fatherPhone" 
+                                   pattern="[0-9]{10}" maxlength="10">
+                        </div>
+                        <div class="form-group">
+                            <label for="motherPhone">Mother's Phone Number</label>
+                            <input type="tel" id="motherPhone" name="motherPhone" 
+                                   pattern="[0-9]{10}" maxlength="10">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hospital Information -->
+                <div class="form-section">
+                    <h3>Hospital Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="hospitalName">Hospital Name <span class="required">*</span></label>
+                            <input type="text" id="hospitalName" name="hospitalName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="hospitalID">Hospital ID <span class="required">*</span></label>
+                            <input type="text" id="hospitalID" name="hospitalID" required>
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="hospitalAddress">Hospital Address</label>
+                        <textarea id="hospitalAddress" name="hospitalAddress" 
+                                  placeholder="Complete hospital address"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="doctorName">Doctor's Name</label>
+                            <input type="text" id="doctorName" name="doctorName">
+                        </div>
+                        <div class="form-group">
+                            <label for="doctorLicense">Doctor's License Number</label>
+                            <input type="text" id="doctorLicense" name="doctorLicense">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Information -->
+                <div class="form-section">
+                    <h3>Additional Information</h3>
+                    <div class="form-group full-width">
+                        <label for="additionalNotes">Additional Notes</label>
+                        <textarea id="additionalNotes" name="additionalNotes" 
+                                  placeholder="Any additional information or special circumstances"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="registrationType">Registration Type <span class="required">*</span></label>
+                        <select id="registrationType" name="registrationType" required>
+                            <option value="">Select type</option>
+                            <option value="normal">Normal Registration</option>
+                            <option value="delayed">Delayed Registration</option>
+                            <option value="correction">Correction/Update</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Submit Registration</button>
+                    <button type="button" class="btn btn-secondary" onclick="resetForm()">Reset Form</button>
+                </div>
+            </form>
+
+            <div class="back-link">
+                <a href="dashboard.html">← Back to Dashboard</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Government Birth Registration Portal. All rights reserved.</p>
+        <div class="footer-logos">
+            <img src="img/swaas.png" alt="Swaas">
+            <img src="img/nic.png" alt="NIC">
+            <img src="img/digital_india.png" alt="Digital India">
+        </div>
+    </footer>
+
+    <script src="js/form.js"></script>
+</body>
+</html> 

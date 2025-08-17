@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Government Birth Registration Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="top-tricolor" aria-hidden="true"></div>
+    <div class="national-ribbon" aria-hidden="true"></div>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="assets/logo.png" alt="Government Logo" class="logo-img">
+            </div>
+            <div class="header-text">
+                <h1>Government Birth Registration Portal</h1>
+                <p>Welcome back, <span id="userName">User</span></p>
+            </div>
+            <div class="user-menu">
+                <button id="logoutBtn" class="logout-btn">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="dashboard-header">
+            <h2>Dashboard</h2>
+            <p>Manage your birth registration activities</p>
+        </div>
+
+        <!-- Statistics Cards Section -->
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-card reviews">
+                    <div class="stat-icon">
+                        <span class="material-symbols-outlined">star</span>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">Reviews</div>
+                        <div class="stat-stars">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card favorites">
+                    <div class="stat-icon">
+                        <span class="material-symbols-outlined">favorite</span>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">Favorites</div>
+                    </div>
+                </div>
+
+                <div class="stat-card views">
+                    <div class="stat-icon">
+                        <span class="material-symbols-outlined">visibility</span>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number">4106</div>
+                        <div class="stat-label">Views</div>
+                    </div>
+                </div>
+
+                <div class="stat-card downloads">
+                    <div class="stat-icon">
+                        <span class="material-symbols-outlined">download</span>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number">119</div>
+                        <div class="stat-label">Downloads</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="dashboard-grid">
+            <!-- Quick Actions Section -->
+            <section class="quick-actions">
+                <h3>Quick Actions</h3>
+                <div class="action-cards">
+                    <div class="action-card">
+                        <div class="action-icon">👶</div>
+                        <h4>Register Birth</h4>
+                        <p>Submit new birth registration</p>
+                        <a href="birth_form.html" class="action-btn">Start Registration</a>
+                    </div>
+                    <div class="action-card">
+                        <div class="action-icon">📋</div>
+                        <h4>View Certificates</h4>
+                        <p>Access birth certificates</p>
+                        <a href="certificate.html" class="action-btn">View Certificates</a>
+                    </div>
+                    <div class="action-card">
+                        <div class="action-icon">📊</div>
+                        <h4>Generate Reports</h4>
+                        <p>Create and download reports</p>
+                        <a href="reports.html" class="action-btn">Generate Reports</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Notifications Section -->
+            <section class="notifications">
+                <h3>Notifications</h3>
+                <div class="notification-list" id="notificationList">
+                    <!-- Notifications will be loaded dynamically -->
+                </div>
+            </section>
+
+            <!-- Communications Panel -->
+            <section class="communications">
+                <h3>Communications</h3>
+                <div class="comm-panel">
+                    <div class="comm-item">
+                        <div class="comm-icon">📧</div>
+                        <div class="comm-content">
+                            <h4>Messages</h4>
+                            <p>Check your inbox for updates</p>
+                            <span class="comm-count">3 new</span>
+                        </div>
+                    </div>
+                    <div class="comm-item">
+                        <div class="comm-icon">🔔</div>
+                        <div class="comm-content">
+                            <h4>Alerts</h4>
+                            <p>Important system notifications</p>
+                            <span class="comm-count">1 new</span>
+                        </div>
+                    </div>
+                    <div class="comm-item">
+                        <div class="comm-icon">📱</div>
+                        <div class="comm-content">
+                            <h4>SMS Updates</h4>
+                            <p>Mobile notifications enabled</p>
+                            <span class="comm-status active">Active</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Activity -->
+            <section class="recent-activity">
+                <h3>Recent Activity</h3>
+                <div class="activity-list" id="activityList">
+                    <!-- Activity items will be loaded dynamically -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Government Birth Registration Portal. All rights reserved.</p>
+    </footer>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html> 

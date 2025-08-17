@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Birth Registration Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="top-tricolor" aria-hidden="true"></div>
+    <div class="national-ribbon" aria-hidden="true"></div>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="img/logo.png" alt="Government Logo" class="logo-img">
+            </div>
+            <div class="header-text">
+                <small class="gov-tagline">Government of India</small>
+                <h1>Government Birth Registration Portal</h1>
+                <p>Official Digital Services for Birth Registration</p>
+            </div>
+            <nav class="header-actions" aria-label="Header actions">
+                <a class="icon-btn" href="index.html" title="Home" aria-label="Home">
+                    <span class="material-symbols-outlined">home</span>
+                </a>
+                <a class="icon-btn" href="dashboard.html" title="Notifications" aria-label="Notifications">
+                    <span class="material-symbols-outlined">notifications</span>
+                </a>
+                <a class="icon-btn" href="reports.html" title="Reports" aria-label="Reports">
+                    <span class="material-symbols-outlined">assignment</span>
+                </a>
+                <a class="icon-btn" href="help.html" title="Help" aria-label="Help">
+                    <span class="material-symbols-outlined">help</span>
+                </a>
+                <div class="auth-buttons">
+                    <a href="login.html" class="auth-btn login-btn">Login</a>
+                    <a href="register.html" class="auth-btn register-btn">Register</a>
+                    <a href="hospital-login.html" class="auth-btn hospital-btn">Hospital</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="welcome-section">
+            <h2>Welcome to Government Birth Registration Portal</h2>
+            <p>Streamline your birth registration process with our digital services. Get your birth certificate quickly and securely.</p>
+        </section>
+
+        <section class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <img src="assets/icons/birth-registration.png.txt" alt="Birth Registration">
+                </div>
+                <h3>Birth Registration</h3>
+                <p>Register your child's birth online with our streamlined digital process.</p>
+                <a href="register.html" class="service-btn">Register Now</a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <img src="assets/icons/certificate.png.txt" alt="Download Certificate">
+                </div>
+                <h3>Download Certificate</h3>
+                <p>Download your birth certificate instantly after verification.</p>
+                <a href="download-certificate.html" class="service-btn">Download</a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <img src="assets/icons/help.png.txt" alt="Help & Support">
+                </div>
+                <h3>Help & Support</h3>
+                <p>Get assistance and guidance for all your registration needs.</p>
+                <a href="help-center.html" class="service-btn">Get Help</a>
+            </div>
+        </section>
+
+
+    </main>
+
+    <footer style="background-color: #333; color: #fff; padding: 20px 0; font-family: Arial, sans-serif;">
+        <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between;">
+          
+          <!-- Quick Links -->
+          <div style="flex: 1 1 200px; margin: 10px;">
+            <h3 style="border-bottom: 2px solid #0ac; padding-bottom: 5px;">Quick Links</h3>
+            <ul style="list-style: none; padding: 0;">
+              <li><a href="#" style="color: #fff; text-decoration: none;">Home</a></li>
+                              <li><a href="about.html" style="color: #fff; text-decoration: none;">About Us</a></li>
+                
+                <li><a href="#" style="color: #fff; text-decoration: none;">Contact Us</a></li>
+                
+                <li><a href="help-center.html" style="color: #fff; text-decoration: none;">Help</a></li>
+                <li><a href="#" style="color: #fff; text-decoration: none;">FAQ</a></li>
+                
+                <li><a href="requisite-documents.html" style="color: #fff; text-decoration: none;">Requisite Documents</a></li>
+                <li><a href="download-certificate.html" style="color: #fff; text-decoration: none;">Download Certificate</a></li>
+              
+              
+            </ul>
+          </div>
+      
+          <!-- Address -->
+          <div style="flex: 1 1 200px; margin: 10px;">
+            
+            <p><strong>Phone No.:</strong>(+91) 2188477166</p>
+            <p>
+              <strong>Email:prabha@gmail.com</strong><br>
+              <a href="mailto:drg-crs.rgi@gov.in" style="color: #0ac;">drg-crs.rgi@gov.in</a><br>
+              <a href="mailto:srocrs.rgi@nic.in" style="color: #0ac;">srocrs.rgi@nic.in</a>
+            </p>
+          </div>
+        </div>
+      
+        <!-- Bottom Bar -->
+        <div style="text-align: center; background-color: #222; padding: 10px;">
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Ensure header stays fixed at all times
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.querySelector('.header');
+            
+            // Force header to stay fixed
+            function ensureHeaderFixed() {
+                if (header) {
+                    header.style.position = 'fixed';
+                    header.style.top = '0';
+                    header.style.left = '0';
+                    header.style.right = '0';
+                    header.style.zIndex = '9999';
+                    header.style.transform = 'none';
+                }
+            }
+            
+            // Apply on load
+            ensureHeaderFixed();
+            
+            // Apply on scroll
+            window.addEventListener('scroll', ensureHeaderFixed);
+            
+            // Apply on resize
+            window.addEventListener('resize', ensureHeaderFixed);
+            
+            // Apply on any DOM changes
+            const observer = new MutationObserver(ensureHeaderFixed);
+            observer.observe(document.body, { 
+                childList: true, 
+                subtree: true 
+            });
+        });
+    </script>
+</body>
+</html> 

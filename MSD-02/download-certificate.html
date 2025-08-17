@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Certificate - Government Birth Registration Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="top-tricolor" aria-hidden="true"></div>
+    <div class="national-ribbon" aria-hidden="true"></div>
+    
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="img/logo.png" alt="Government Logo" class="logo-img">
+            </div>
+            <div class="header-text">
+                <small class="gov-tagline">Government of India</small>
+                <h1>Government Birth Registration Portal</h1>
+                <p>Official Digital Services for Birth Registration</p>
+            </div>
+            <nav class="header-actions" aria-label="Header actions">
+                <a class="icon-btn" href="index.html" title="Home" aria-label="Home">
+                    <span class="material-symbols-outlined">home</span>
+                </a>
+                <a class="icon-btn" href="dashboard.html" title="Dashboard" aria-label="Dashboard">
+                    <span class="material-symbols-outlined">dashboard</span>
+                </a>
+                <a class="icon-btn" href="help-center.html" title="Help" aria-label="Help">
+                    <span class="material-symbols-outlined">help</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="certificate-download-section">
+            <div class="download-container">
+                <div class="download-header">
+                    <h2>Download Certificate</h2>
+                    <span class="material-symbols-outlined download-icon">download</span>
+                </div>
+                
+                <form class="download-form" id="certificateForm">
+                    <div class="form-group">
+                        <label for="saralId">Enter your Birth Registration ID:</label>
+                        <input type="text" id="saralId" name="saralId" placeholder="Enter Birth Registration ID" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="applicationDate">Application Submission Date:</label>
+                        <input type="date" id="applicationDate" name="applicationDate" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="captcha">Enter Captcha:</label>
+                        <div class="captcha-container">
+                            <input type="text" id="captcha" name="captcha" placeholder="Enter Captcha" required>
+                            <div class="captcha-box" id="captchaBox">
+                                <span id="captchaText">1VHERx</span>
+                            </div>
+                            <button type="button" class="refresh-captcha" id="refreshCaptcha" title="Refresh Captcha">
+                                <span class="material-symbols-outlined">refresh</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                        <button type="submit" class="btn btn-primary">Download Certificate!</button>
+                    </div>
+                </form>
+                
+                <div class="download-info">
+                    <h3>Important Information:</h3>
+                    <ul>
+                        <li>Birth Registration ID can be found on your application receipt</li>
+                        <li>Application date should match the date when you submitted your application</li>
+                        <li>Certificate will be available for download after successful verification</li>
+                        <li>Keep your certificate safe as it's an official government document</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background-color: #333; color: #fff; padding: 20px 0; font-family: Arial, sans-serif;">
+        <div style="max-width: 1200px; margin: auto; text-align: center;">
+            <p>&copy; 2024 Government Birth Registration Portal. All rights reserved.</p>
+            <p><a href="index.html" style="color: #0ac;">Back to Home</a></p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Generate random captcha
+        function generateCaptcha() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let captcha = '';
+            for (let i = 0; i < 6; i++) {
+                captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return captcha;
+        }
+
+        // Set current date as default
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('applicationDate').value = today;
+            
+            // Generate initial captcha
+            document.getElementById('captchaText').textContent = generateCaptcha();
+            
+            // Refresh captcha functionality
+            document.getElementById('refreshCaptcha').addEventListener('click', function() {
+                document.getElementById('captchaText').textContent = generateCaptcha();
+                document.getElementById('captcha').value = '';
+            });
+            
+            // Form submission
+            document.getElementById('certificateForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const saralId = document.getElementById('saralId').value;
+                const applicationDate = document.getElementById('applicationDate').value;
+                const captcha = document.getElementById('captcha').value;
+                const captchaText = document.getElementById('captchaText').textContent;
+                
+                if (captcha.toUpperCase() !== captchaText) {
+                    alert('Invalid Captcha! Please try again.');
+                    document.getElementById('captchaText').textContent = generateCaptcha();
+                    document.getElementById('captcha').value = '';
+                    return;
+                }
+                
+                if (!saralId || !applicationDate) {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+                
+                // Simulate certificate download
+                alert('Certificate download started! Your birth certificate will be downloaded shortly.');
+                
+                // Here you would typically make an API call to download the certificate
+                // For demo purposes, we'll just show a success message
+                console.log('Downloading certificate for ID:', saralId, 'Date:', applicationDate);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help & Support - Government Birth Registration Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .help-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .help-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .help-header h2 {
+            color: var(--primary-blue);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .help-header p {
+            color: var(--dark-gray);
+            font-size: 1.1rem;
+        }
+
+        .help-sections {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .help-section {
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .help-section h3 {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 1.5rem;
+            margin: 0;
+            font-size: 1.3rem;
+        }
+
+        .help-content {
+            padding: 2rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1.5rem;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question:hover {
+            color: var(--secondary-blue);
+        }
+
+        .faq-answer {
+            color: var(--dark-gray);
+            line-height: 1.6;
+            display: none;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        .toggle-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-icon.active {
+            transform: rotate(180deg);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .contact-card {
+            background: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-card h4 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .contact-card p {
+            color: var(--dark-gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        .step-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .step-list li {
+            background: var(--light-gray);
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-blue);
+            position: relative;
+        }
+
+        .step-list li::before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            background: var(--primary-blue);
+            color: var(--white);
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            left: -12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .step-list {
+            counter-reset: step-counter;
+        }
+
+        .document-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .document-item {
+            background: var(--light-gray);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .document-item h5 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .document-item p {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+
+        .emergency-contact {
+            background: linear-gradient(135deg, #dc3545, #c82333);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .emergency-contact h4 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .emergency-contact p {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .back-link a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.8rem 1.5rem;
+            border: 2px solid var(--primary-blue);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link a:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .document-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="assets/logo.png" alt="Government Logo" class="logo-img">
+            </div>
+            <div class="header-text">
+                <h1>Government Birth Registration Portal</h1>
+                <p>Help & Support</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="help-container">
+            <div class="help-header">
+                <h2>Help & Support Center</h2>
+                <p>Find answers to common questions and get assistance with birth registration</p>
+            </div>
+
+            <div class="help-sections">
+                <div class="help-section">
+                    <h3>Frequently Asked Questions</h3>
+                    <div class="help-content">
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                What documents are required for birth registration?
+                                <span class="toggle-icon">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                You will need: Hospital discharge summary, Parent's Aadhaar cards, Marriage certificate (if applicable), 
+                                Address proof, and any other documents as specified by your state government.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                How long does the registration process take?
+                                <span class="toggle-icon">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                Typically, the registration process takes 7-15 working days for approval. 
+                                You will receive notifications at each stage of the process.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                Can I register a birth if the child is older than 1 year?
+                                <span class="toggle-icon">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                Yes, but additional documentation and fees may apply. Please contact your local 
+                                registrar office for specific requirements in your area.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                What if I find an error in my birth certificate?
+                                <span class="toggle-icon">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                You can apply for corrections through the portal. Submit the required documents 
+                                and pay the correction fee. The process usually takes 10-15 working days.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                Is birth registration mandatory?
+                                <span class="toggle-icon">▼</span>
+                            </div>
+                            <div class="faq-answer">
+                                Yes, birth registration is mandatory under the Registration of Births and Deaths Act, 1969. 
+                                It is essential for obtaining various government services and documents.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="help-section">
+                    <h3>Registration Process</h3>
+                    <div class="help-content">
+                        <ol class="step-list">
+                            <li>Fill out the birth registration form with accurate information</li>
+                            <li>Upload required documents (Aadhaar, hospital records, etc.)</li>
+                            <li>Submit the form for verification</li>
+                            <li>Wait for approval from the registrar office</li>
+                            <li>Download your birth certificate once approved</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="help-section">
+                    <h3>Required Documents</h3>
+                    <div class="help-content">
+                        <div class="document-list">
+                            <div class="document-item">
+                                <h5>Hospital Records</h5>
+                                <p>Discharge summary, birth report</p>
+                            </div>
+                            <div class="document-item">
+                                <h5>Parent's Aadhaar</h5>
+                                <p>Both parents' Aadhaar cards</p>
+                            </div>
+                            <div class="document-item">
+                                <h5>Address Proof</h5>
+                                <p>Utility bills, rental agreement</p>
+                            </div>
+                            <div class="document-item">
+                                <h5>Marriage Certificate</h5>
+                                <p>If parents are married</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="help-section">
+                    <h3>Contact Information</h3>
+                    <div class="help-content">
+                        <div class="contact-grid">
+                            <div class="contact-card">
+                                <h4>General Support</h4>
+                                <p>📞 1800-XXX-XXXX</p>
+                                <p>📧 support@birthreg.gov.in</p>
+                                <p>🕒 Mon-Fri: 9 AM - 6 PM</p>
+                            </div>
+                            <div class="contact-card">
+                                <h4>Technical Support</h4>
+                                <p>📞 1800-XXX-XXXX</p>
+                                <p>📧 tech@birthreg.gov.in</p>
+                                <p>🕒 24/7 Support</p>
+                            </div>
+                            <div class="contact-card">
+                                <h4>State Office</h4>
+                                <p>📍 [Your State] Registrar Office</p>
+                                <p>📞 [State Office Number]</p>
+                                <p>📧 [State Office Email]</p>
+                            </div>
+                        </div>
+
+                        <div class="emergency-contact">
+                            <h4>🚨 Emergency Contact</h4>
+                            <p>For urgent birth registration matters</p>
+                            <p>📞 Emergency: 112</p>
+                            <p>📧 emergency@birthreg.gov.in</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="help-section">
+                    <h3>Additional Resources</h3>
+                    <div class="help-content">
+                        <ul>
+                            <li><strong>User Manual:</strong> <a href="#" onclick="downloadManual()">Download PDF Guide</a></li>
+                            <li><strong>Video Tutorials:</strong> <a href="#" onclick="showVideos()">Watch Step-by-Step Videos</a></li>
+                            <li><strong>State Guidelines:</strong> <a href="#" onclick="showGuidelines()">View State-Specific Rules</a></li>
+                            <li><strong>Legal Information:</strong> <a href="#" onclick="showLegalInfo()">Birth Registration Laws</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="back-link">
+                <a href="index.html">← Back to Homepage</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Government Birth Registration Portal. All rights reserved.</p>
+    </footer>
+
+    <script src="js/help.js"></script>
+</body>
+</html> 

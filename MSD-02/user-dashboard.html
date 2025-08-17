@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - Government Birth Registration Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300..700,0..1,-50..200" />
+</head>
+<body class="dashboard-body">
+    <div class="top-tricolor" aria-hidden="true"></div>
+    <div class="national-ribbon" aria-hidden="true"></div>
+    
+    <header class="header dashboard-header-custom">
+        <div class="header-content">
+            <div class="logo">
+                <img src="img/logo.png" alt="Government Logo" class="logo-img">
+            </div>
+            <div class="header-text">
+                <small class="gov-tagline">Government of India</small>
+                <h1>Government Birth Registration Portal</h1>
+                <p>Welcome, <span id="userName">ssai</span>! Manage your birth certificate applications</p>
+            </div>
+            <nav class="header-actions" aria-label="Header actions">
+                <a class="icon-btn" href="index.html" title="Home" aria-label="Home">
+                    <span class="material-symbols-outlined">home</span>
+                </a>
+                <a class="icon-btn" href="#" title="Notifications" aria-label="Notifications">
+                    <span class="material-symbols-outlined">notifications</span>
+                </a>
+                <button id="logoutBtn" class="logout-btn">Logout</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content dashboard-main">
+        <!-- Blockchain Verification Bar -->
+        <div class="blockchain-verification" id="blockchainVerification">
+            <div class="verification-content">
+                <span class="material-symbols-outlined lock-icon">lock</span>
+                <span class="verification-text">Verify Blockchain Integrity</span>
+            </div>
+        </div>
+
+        <!-- Summary Cards Section -->
+        <section class="summary-cards-section">
+            <div class="summary-grid">
+                <div class="summary-card pending">
+                    <div class="card-icon">
+                        <span class="material-symbols-outlined">pending</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-number">1</div>
+                        <div class="card-label">Pending Certificates</div>
+                    </div>
+                </div>
+                <div class="summary-card approved">
+                    <div class="card-icon">
+                        <span class="material-symbols-outlined">verified</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-number">3</div>
+                        <div class="card-label">Approved Certificates</div>
+                    </div>
+                </div>
+                <div class="summary-card rejected">
+                    <div class="card-icon">
+                        <span class="material-symbols-outlined">cancel</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-number">0</div>
+                        <div class="card-label">Rejected Certificates</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pending Certificates Section -->
+        <section class="certificates-section pending-section">
+            <div class="section-header pending-header">
+                <h3>
+                    <span class="material-symbols-outlined">pending</span>
+                    Pending Certificates
+                </h3>
+            </div>
+            
+            <div class="certificates-table-container">
+                <table class="certificates-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Date of Birth</th>
+                            <th>Status</th>
+                            <th>Created</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>8</td>
+                            <td>abc</td>
+                            <td>2010-10-10</td>
+                            <td><span class="status-badge pending">Pending</span></td>
+                            <td>2025-01-30</td>
+                            <td>
+                                <button class="action-btn details-btn" title="View Details" onclick="viewCertificateDetails(8, 'abc')">
+                                    <span class="material-symbols-outlined">info</span>
+                                    Details
+                                </button>
+                                <button class="action-btn approve-btn" title="Approve" onclick="approveCertificate(8)">
+                                    <span class="material-symbols-outlined">check</span>
+                                    Approve
+                                </button>
+                                <button class="action-btn reject-btn" title="Reject" onclick="rejectCertificate(8)">
+                                    <span class="material-symbols-outlined">close</span>
+                                    Reject
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Approved Certificates Section -->
+        <section class="certificates-section approved-section">
+            <div class="section-header approved-header">
+                <h3>
+                    <span class="material-symbols-outlined">verified</span>
+                    Approved Certificates
+                </h3>
+            </div>
+            
+            <div class="certificates-table-container">
+                <table class="certificates-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Date of Birth</th>
+                            <th>Status</th>
+                            <th>Created</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>5</td>
+                            <td>ss</td>
+                            <td>1996-02-05</td>
+                            <td><span class="status-badge approved">Approved</span></td>
+                            <td>2024-01-15</td>
+                            <td>
+                                <button class="action-btn view-btn" title="View Certificate" onclick="viewCertificate(5, 'ss')">
+                                    <span class="material-symbols-outlined">visibility</span>
+                                    View
+                                </button>
+                                <button class="action-btn download-btn" title="Download Certificate" onclick="downloadCertificate(5)">
+                                    <span class="material-symbols-outlined">download</span>
+                                    Download
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>asd</td>
+                            <td>2008-02-04</td>
+                            <td><span class="status-badge approved">Approved</span></td>
+                            <td>2024-01-20</td>
+                            <td>
+                                <button class="action-btn view-btn" title="View Certificate" onclick="viewCertificate(6, 'asd')">
+                                    <span class="material-symbols-outlined">visibility</span>
+                                    View
+                                </button>
+                                <button class="action-btn download-btn" title="Download Certificate" onclick="downloadCertificate(6)">
+                                    <span class="material-symbols-outlined">download</span>
+                                    Download
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>sasa</td>
+                            <td>2020-10-10</td>
+                            <td><span class="status-badge approved">Approved</span></td>
+                            <td>2024-01-25</td>
+                            <td>
+                                <button class="action-btn view-btn" title="View Certificate" onclick="viewCertificate(7, 'sasa')">
+                                    <span class="material-symbols-outlined">visibility</span>
+                                    View
+                                </button>
+                                <button class="action-btn download-btn" title="Download Certificate" onclick="downloadCertificate(7)">
+                                    <span class="material-symbols-outlined">download</span>
+                                    Download
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Quick Actions Section -->
+        <section class="quick-actions-section">
+            <div class="section-header">
+                <h3>Quick Actions</h3>
+            </div>
+            <div class="quick-actions-grid">
+                <div class="quick-action-card">
+                    <div class="action-icon">
+                        <span class="material-symbols-outlined">add_circle</span>
+                    </div>
+                    <h4>New Application</h4>
+                    <p>Submit a new birth certificate application</p>
+                    <button class="btn btn-primary" onclick="applyNewCertificate()">Apply Now</button>
+                </div>
+                <div class="quick-action-card">
+                    <div class="action-icon">
+                        <span class="material-symbols-outlined">search</span>
+                    </div>
+                    <h4>Search Records</h4>
+                    <p>Search through your existing applications</p>
+                    <button class="btn btn-secondary" onclick="searchRecords()">Search</button>
+                </div>
+                <div class="quick-action-card">
+                    <div class="action-icon">
+                        <span class="material-symbols-outlined">download</span>
+                    </div>
+                    <h4>Download All</h4>
+                    <p>Download all your approved certificates</p>
+                    <button class="btn btn-accent" onclick="downloadAllCertificates()">Download</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificate Status Guide -->
+        <section class="status-guide-section">
+            <div class="section-header">
+                <h3>Certificate Status Guide</h3>
+            </div>
+            <div class="status-guide-container">
+                <div class="status-guide-video">
+                    <div class="video-placeholder" onclick="playStatusGuide()">
+                        <span class="material-symbols-outlined">play_circle</span>
+                        <p>Status Guide Video</p>
+                        <div class="video-progress">
+                            <span>0:16 / 2:24</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="status-guide-info">
+                    <h4>Understanding Your Certificate Status</h4>
+                    <div class="status-examples">
+                        <div class="status-example">
+                            <span class="status-badge approved">Approved</span>
+                            <p>Your certificate is ready for download</p>
+                        </div>
+                        <div class="status-example">
+                            <span class="status-badge pending">Pending</span>
+                            <p>Application is under review</p>
+                        </div>
+                        <div class="status-example">
+                            <span class="status-badge rejected">Rejected</span>
+                            <p>Application needs corrections</p>
+                        </div>
+                    </div>
+                    <div class="help-section" onclick="contactSupport()">
+                        <span class="material-symbols-outlined">help</span>
+                        <span>Need help? Contact support</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal for Certificate Details -->
+    <div id="certificateModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Certificate Details</h3>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="modalContent">
+                    <!-- Content will be populated dynamically -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal()">Close</button>
+                <button class="btn btn-primary" id="modalActionBtn">Action</button>
+            </div>
+        </div>
+    </div>
+
+    <footer style="background-color: #333; color: #fff; padding: 20px 0; font-family: Arial, sans-serif;">
+        <div style="max-width: 1200px; margin: auto; text-align: center;">
+            <p>&copy; 2024 Government Birth Registration Portal. All rights reserved.</p>
+            <p><a href="index.html" style="color: #0ac;">Back to Home</a></p>
+        </div>
+    </footer>
+
+    <script src="js/dashboard.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get user name from URL parameters or localStorage
+            const urlParams = new URLSearchParams(window.location.search);
+            const userName = urlParams.get('user') || localStorage.getItem('userName') || 'ssai';
+            
+            // Update user name displays
+            document.getElementById('userName').textContent = userName;
+            
+            // Blockchain verification functionality
+            const blockchainVerification = document.getElementById('blockchainVerification');
+            blockchainVerification.addEventListener('click', function() {
+                verifyBlockchain();
+            });
+            
+            // Logout functionality
+            document.getElementById('logoutBtn').addEventListener('click', function() {
+                if (confirm('Are you sure you want to logout?')) {
+                    localStorage.removeItem('userName');
+                    window.location.href = 'index.html';
+                }
+            });
+        });
+
+        // Blockchain verification function
+        function verifyBlockchain() {
+            const verification = document.getElementById('blockchainVerification');
+            verification.classList.add('verifying');
+            verification.querySelector('.verification-text').textContent = 'Verifying...';
+            
+            setTimeout(() => {
+                verification.classList.remove('verifying');
+                verification.classList.add('verified');
+                verification.querySelector('.verification-text').textContent = 'Verified ✓';
+                
+                setTimeout(() => {
+                    verification.classList.remove('verified');
+                    verification.querySelector('.verification-text').textContent = 'Verify Blockchain Integrity';
+                }, 3000);
+            }, 2000);
+        }
+
+        // View certificate function
+        function viewCertificate(id, name) {
+            window.location.href = `view-certificate.html?id=${id}&name=${name}`;
+        }
+
+        // View certificate details function
+        function viewCertificateDetails(id, name) {
+            const modal = document.getElementById('certificateModal');
+            const modalContent = document.getElementById('modalContent');
+            const actionBtn = document.getElementById('modalActionBtn');
+            
+            modalContent.innerHTML = `
+                <h4>Certificate Details - ID: ${id}</h4>
+                <div style="margin: 1rem 0;">
+                    <p><strong>Name:</strong> ${name}</p>
+                    <p><strong>Status:</strong> <span class="status-badge pending">Pending</span></p>
+                    <p><strong>Application Date:</strong> 2025-01-30</p>
+                    <p><strong>Documents Submitted:</strong> All required documents submitted</p>
+                    <p><strong>Current Stage:</strong> Under review by authorities</p>
+                </div>
+            `;
+            
+            actionBtn.textContent = 'Approve Certificate';
+            actionBtn.onclick = () => approveCertificate(id);
+            modal.style.display = 'block';
+        }
+
+        // Approve certificate function
+        function approveCertificate(id) {
+            if (confirm('Are you sure you want to approve this certificate?')) {
+                // Simulate approval process
+                alert(`Certificate ${id} has been approved!`);
+                closeModal();
+                // Refresh the page to show updated status
+                setTimeout(() => {
+                    location.reload();
+                }, 1000);
+            }
+        }
+
+        // Reject certificate function
+        function rejectCertificate(id) {
+            const reason = prompt('Please provide a reason for rejection:');
+            if (reason) {
+                alert(`Certificate ${id} has been rejected. Reason: ${reason}`);
+                // Refresh the page to show updated status
+                setTimeout(() => {
+                    location.reload();
+                }, 1000);
+            }
+        }
+
+        // Download certificate function
+        function downloadCertificate(id) {
+            alert(`Downloading certificate ${id}...`);
+            // Here you would typically trigger a download
+        }
+
+        // Apply for new certificate function
+        function applyNewCertificate() {
+            window.location.href = 'birth_form.html';
+        }
+
+        // Search records function
+        function searchRecords() {
+            const searchTerm = prompt('Enter search term (name, ID, or date):');
+            if (searchTerm) {
+                alert(`Searching for: ${searchTerm}`);
+                // Here you would implement search functionality
+            }
+        }
+
+        // Download all certificates function
+        function downloadAllCertificates() {
+            if (confirm('Download all approved certificates?')) {
+                alert('Preparing download package...');
+                // Here you would implement bulk download
+            }
+        }
+
+        // Play status guide function
+        function playStatusGuide() {
+            alert('Playing status guide video...');
+            // Here you would implement video player
+        }
+
+        // Contact support function
+        function contactSupport() {
+            const supportOptions = [
+                'Email: support@birthportal.gov.in',
+                'Phone: (+91) 2188477166',
+                'Live Chat: Available 24/7'
+            ];
+            alert('Contact Support:\n\n' + supportOptions.join('\n'));
+        }
+
+        // Close modal function
+        function closeModal() {
+            document.getElementById('certificateModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('certificateModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

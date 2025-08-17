@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Portal - Birth Registration</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="top-tricolor" aria-hidden="true"></div>
+    <div class="national-ribbon" aria-hidden="true"></div>
+    
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-placeholder">🏥</div>
+            </div>
+            <div class="header-text">
+                <small class="gov-tagline">Hospital Portal</small>
+                <h1>Birth Notification System</h1>
+                <p>Upload and manage birth notifications</p>
+            </div>
+            <nav class="header-actions">
+                <a class="icon-btn" href="index.html" title="Home">
+                    <span class="material-symbols-outlined">home</span>
+                </a>
+                <button class="icon-btn" id="toggleView" title="Toggle View">
+                    <span class="material-symbols-outlined">view_list</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- Hospital Dashboard Toggle -->
+        <div class="view-toggle">
+            <button class="toggle-btn active" data-view="upload">
+                <span class="material-symbols-outlined">upload</span>
+                Upload Birth Notification
+            </button>
+            <button class="toggle-btn" data-view="dashboard">
+                <span class="material-symbols-outlined">dashboard</span>
+                Hospital Dashboard
+            </button>
+        </div>
+
+        <!-- Upload Birth Notification Form -->
+        <section class="upload-section" id="uploadSection">
+            <div class="form-container">
+                <div class="form-header">
+                    <h2>Birth Notification Upload</h2>
+                    <p>Enter newborn details to generate Hospital ID</p>
+                </div>
+
+                <form id="birthNotificationForm" class="birth-notification-form">
+                    <div class="form-section">
+                        <h3>Hospital Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="hospitalName">Hospital Name <span class="required">*</span></label>
+                                <input type="text" id="hospitalName" name="hospitalName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="hospitalRegNo">Hospital Registration Number <span class="required">*</span></label>
+                                <input type="text" id="hospitalRegNo" name="hospitalRegNo" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="hospitalAddress">Hospital Address</label>
+                            <textarea id="hospitalAddress" name="hospitalAddress" rows="2"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Newborn Details</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="childName">Child's Name (Temporary) <span class="required">*</span></label>
+                                <input type="text" id="childName" name="childName" placeholder="Enter temporary name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="gender">Gender <span class="required">*</span></label>
+                                <select id="gender" name="gender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="dateOfBirth">Date of Birth <span class="required">*</span></label>
+                                <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="timeOfBirth">Time of Birth <span class="required">*</span></label>
+                                <input type="time" id="timeOfBirth" name="timeOfBirth" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="weight">Weight (kg)</label>
+                                <input type="number" id="weight" name="weight" step="0.1" min="0" placeholder="e.g., 3.2">
+                            </div>
+                            <div class="form-group">
+                                <label for="deliveryType">Delivery Type</label>
+                                <select id="deliveryType" name="deliveryType">
+                                    <option value="">Select Type</option>
+                                    <option value="Normal">Normal Delivery</option>
+                                    <option value="Cesarean">Cesarean Section</option>
+                                    <option value="Assisted">Assisted Delivery</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Medical Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="attendingDoctor">Attending Doctor <span class="required">*</span></label>
+                                <input type="text" id="attendingDoctor" name="attendingDoctor" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="doctorLicense">Doctor's License Number</label>
+                                <input type="text" id="doctorLicense" name="doctorLicense">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="medicalNotes">Medical Notes (Optional)</label>
+                            <textarea id="medicalNotes" name="medicalNotes" rows="3" placeholder="Any special medical conditions or notes"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="reset" class="btn btn-secondary">Reset Form</button>
+                        <button type="submit" class="btn btn-primary">
+                            <span class="material-symbols-outlined">upload</span>
+                            Upload Birth Notification
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Generated Hospital ID Display -->
+                <div class="hospital-id-display" id="hospitalIdDisplay" style="display: none;">
+                    <div class="id-card">
+                        <h3>Birth Notification Uploaded Successfully!</h3>
+                        <div class="generated-id">
+                            <label>Generated Hospital ID:</label>
+                            <div class="id-value" id="generatedHospitalId"></div>
+                            <button class="copy-btn" id="copyIdBtn">
+                                <span class="material-symbols-outlined">content_copy</span>
+                                Copy ID
+                            </button>
+                        </div>
+                        <p class="id-instructions">
+                            Share this Hospital ID with the parents for their registration process.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hospital Dashboard -->
+        <section class="dashboard-section" id="dashboardSection" style="display: none;">
+            <div class="dashboard-header">
+                <h2>Hospital Dashboard</h2>
+                <p>Manage your birth notifications</p>
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <span class="stat-number" id="totalNotifications">0</span>
+                        <span class="stat-label">Total Notifications</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="todayNotifications">0</span>
+                        <span class="stat-label">Today's Uploads</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="pendingRegistrations">0</span>
+                        <span class="stat-label">Pending Registrations</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-controls">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search by Hospital ID, Child Name, or Date...">
+                    <button class="search-btn" id="searchBtn">
+                        <span class="material-symbols-outlined">search</span>
+                    </button>
+                </div>
+                <div class="filter-controls">
+                    <select id="dateFilter">
+                        <option value="all">All Dates</option>
+                        <option value="today">Today</option>
+                        <option value="week">This Week</option>
+                        <option value="month">This Month</option>
+                    </select>
+                    <select id="statusFilter">
+                        <option value="all">All Status</option>
+                        <option value="pending">Pending Registration</option>
+                        <option value="registered">Registered</option>
+                        <option value="approved">Approved</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="notifications-table-container">
+                <table class="notifications-table">
+                    <thead>
+                        <tr>
+                            <th>Hospital ID</th>
+                            <th>Child Name</th>
+                            <th>Date & Time of Birth</th>
+                            <th>Gender</th>
+                            <th>Weight</th>
+                            <th>Doctor</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="notificationsTableBody">
+                        <!-- Dynamic content will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Government Birth Registration Portal. All rights reserved.</p>
+            <p><a href="index.html">← Back to Home</a></p>
+        </div>
+    </footer>
+
+    <script src="hospital.js"></script>
+</body>
+</html>

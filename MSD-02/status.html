@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Status - Birth Registration Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="top-tricolor" aria-hidden="true"></div>
+    <div class="national-ribbon" aria-hidden="true"></div>
+    
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-placeholder">🔍</div>
+            </div>
+            <div class="header-text">
+                <small class="gov-tagline">Status Tracking</small>
+                <h1>Track Application Status</h1>
+                <p>Check your birth registration application status</p>
+            </div>
+            <nav class="header-actions">
+                <a class="icon-btn" href="index.html" title="Home">
+                    <span class="material-symbols-outlined">home</span>
+                </a>
+                <a class="icon-btn" href="register.html" title="New Registration">
+                    <span class="material-symbols-outlined">add</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- Status Tracking Form -->
+        <section class="tracking-section">
+            <div class="tracking-container">
+                <div class="tracking-header">
+                    <h2>Track Your Application</h2>
+                    <p>Enter your registration number to check status</p>
+                </div>
+                
+                <form class="tracking-form" id="statusTrackingForm">
+                    <div class="form-group">
+                        <label for="registrationNumber">Registration Number <span class="required">*</span></label>
+                        <input type="text" id="registrationNumber" name="registrationNumber" 
+                               placeholder="e.g., REG-20250130-001" required>
+                        <small class="field-help">Enter the registration number you received after submitting your application</small>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <span class="material-symbols-outlined">search</span>
+                            Track Status
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Status Display -->
+        <section class="status-display-section" id="statusDisplaySection" style="display: none;">
+            <div class="status-container">
+                <div class="status-header">
+                    <h2>Application Status</h2>
+                    <div class="status-badge-large" id="currentStatus">
+                        <span class="status-icon"></span>
+                        <span class="status-text"></span>
+                    </div>
+                </div>
+
+                <!-- Application Details -->
+                <div class="application-details">
+                    <div class="details-card">
+                        <h3>Application Information</h3>
+                        <div class="details-grid">
+                            <div class="detail-item">
+                                <label>Registration Number:</label>
+                                <span id="statusRegNumber"></span>
+                            </div>
+                            <div class="detail-item">
+                                <label>Child's Name:</label>
+                                <span id="statusChildName"></span>
+                            </div>
+                            <div class="detail-item">
+                                <label>Date of Birth:</label>
+                                <span id="statusDOB"></span>
+                            </div>
+                            <div class="detail-item">
+                                <label>Hospital ID:</label>
+                                <span id="statusHospitalId"></span>
+                            </div>
+                            <div class="detail-item">
+                                <label>Submitted Date:</label>
+                                <span id="statusSubmittedDate"></span>
+                            </div>
+                            <div class="detail-item">
+                                <label>Last Updated:</label>
+                                <span id="statusLastUpdated"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Status Timeline -->
+                <div class="status-timeline">
+                    <h3>Application Timeline</h3>
+                    <div class="timeline" id="statusTimeline">
+                        <!-- Dynamic timeline content -->
+                    </div>
+                </div>
+
+                <!-- Actions Based on Status -->
+                <div class="status-actions" id="statusActions">
+                    <!-- Dynamic action buttons -->
+                </div>
+
+                <!-- Certificate Download (if approved) -->
+                <div class="certificate-download" id="certificateDownload" style="display: none;">
+                    <div class="download-card">
+                        <div class="download-icon">
+                            <span class="material-symbols-outlined">download</span>
+                        </div>
+                        <h3>Certificate Ready for Download</h3>
+                        <p>Your birth certificate has been approved and is ready for download</p>
+                        <button class="btn btn-success" id="downloadCertificateBtn">
+                            <span class="material-symbols-outlined">download</span>
+                            Download Certificate
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Applications -->
+        <section class="recent-applications-section">
+            <div class="recent-container">
+                <h2>Recent Applications</h2>
+                <p>Your recently submitted applications</p>
+                
+                <div class="recent-applications" id="recentApplications">
+                    <!-- Dynamic content will be loaded here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Government Birth Registration Portal. All rights reserved.</p>
+            <p><a href="index.html">← Back to Home</a></p>
+        </div>
+    </footer>
+
+    <script src="status.js"></script>
+</body>
+</html>
