@@ -31,4 +31,4 @@ The project provides two portals: one for **Hospitals** to register births and a
 
 ### Clone the Repository
 ```bash
-git clone https://github.com/dhanushmatcha/MSD-02.git
+(https://birthregistrationss.netlify.app/)
