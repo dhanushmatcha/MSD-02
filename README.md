@@ -31,4 +31,4 @@ The project provides two portals: one for **Hospitals** to register births and a
 
 ### Clone the Repository
 ```bash
-(https://birthregistrationss.netlify.app/)
+https://birthregistrationss.netlify.app/
